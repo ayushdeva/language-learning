@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "slam-explorer",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "--project", "adults/analysis/slam", "streamlit", "run", "adults/analysis/slam/app.py", "--server.headless", "true", "--server.port", "8501"],
+      "port": 8501
+    },
+    {
+      "name": "hlr-explorer",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "--project", "adults/analysis/duolingo_hlr", "streamlit", "run", "adults/analysis/duolingo_hlr/app.py", "--server.headless", "true", "--server.port", "8502"],
+      "port": 8502
+    },
+    {
+      "name": "speech-explorer",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "--project", "adults/analysis/speechocean762", "streamlit", "run", "adults/analysis/speechocean762/app.py", "--server.headless", "true", "--server.port", "8503"],
+      "port": 8503
+    }
+  ]
+}
