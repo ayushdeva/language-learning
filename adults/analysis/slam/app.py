@@ -12,6 +12,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+import overview
+
 PQ = Path(__file__).resolve().parents[2] / "data" / "slam" / "parquet"
 TRACKS = {
     "en_es": "Spanish speakers learning English",
@@ -87,7 +89,7 @@ track = st.sidebar.selectbox("Track", list(TRACKS), format_func=lambda t: f"{t}:
 D = load(track)
 st.sidebar.caption(
     f"{D['users'].shape[0]:,} learners · {len(D['ex']):,} exercises · "
-    f"{len(D['tok']):,} words answered · first ~30 days on Duolingo (2017)")
+    f"{len(D['tok']):,} words answered · first ~30 days on Duolingo")
 st.sidebar.markdown(
     "**How to read 'better than expected'**  \n"
     "A model predicts each answer from the learner's overall ability (per exercise type), "
@@ -95,7 +97,10 @@ st.sidebar.markdown(
     "when they get it right more often than that predicts. Links between words use this, "
     "so 'strong learners know everything' doesn't show up as a pattern.")
 
-tab_student, tab_word, tab_patterns = st.tabs(["Student", "Word", "Patterns"])
+tab_overview, tab_student, tab_word, tab_patterns = st.tabs(["Overview", "Student", "Word", "Patterns"])
+
+with tab_overview:
+    overview.render(D, track, PQ, list(TRACKS))
 
 # ---------------------------------------------------------------- student
 with tab_student:

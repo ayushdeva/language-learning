@@ -12,6 +12,8 @@ import duckdb
 import pandas as pd
 import streamlit as st
 
+import overview
+
 PQ = Path(__file__).resolve().parents[2] / "data" / "duolingo_hlr" / "parquet"
 TRACES = PQ / "traces.parquet"
 LANGS = {"de": "German", "en": "English", "es": "Spanish", "fr": "French", "it": "Italian", "pt": "Portuguese"}
@@ -78,7 +80,10 @@ st.sidebar.markdown(
     "**Recall** = share of a session's exercises where the word was answered right "
     "(most sessions test a word 1-3 times).")
 
-tab_student, tab_word, tab_patterns = st.tabs(["Student", "Word", "Patterns"])
+tab_overview, tab_student, tab_word, tab_patterns = st.tabs(["Overview", "Student", "Word", "Patterns"])
+
+with tab_overview:
+    overview.render(D, TRACES, DELTA_ORDER)
 
 # ---------------------------------------------------------------- student
 with tab_student:

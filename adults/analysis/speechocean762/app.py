@@ -12,6 +12,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+import overview
+
 PQ = Path(__file__).resolve().parents[2] / "data" / "speechocean762" / "parquet"
 GROUPS = ["child (6-12)", "teen (13-15)", "adult (19+)"]
 VOWELS = {"AA", "AE", "AH", "AO", "AW", "AY", "EH", "ER", "EY", "IH", "IY", "OW", "OY", "UH", "UW"}
@@ -98,7 +100,10 @@ st.sidebar.markdown(
     "**Children vs adults**: the two groups read almost entirely *different* sentences "
     "(children's are shorter and simpler). Comparisons marked *matched* use only words read by both.")
 
-tab_spk, tab_sound, tab_pat = st.tabs(["Speaker", "Sound", "Patterns"])
+tab_overview, tab_spk, tab_sound, tab_pat = st.tabs(["Overview", "Speaker", "Sound", "Patterns"])
+
+with tab_overview:
+    overview.render(spk, utt, words, ph, ins, VOWELS)
 
 # ---------------------------------------------------------------- speaker
 with tab_spk:

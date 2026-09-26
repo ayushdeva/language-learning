@@ -17,3 +17,7 @@ uv run streamlit run app.py --server.port 8502
   The app ranks words by the plain recall drop between short (<1 day) and long (>1 week) gaps instead.
 - More prior practice only slightly flattens the curve at long gaps (3 mo+: 84.6% with 1-2 prior
   views vs ~86.5% with 6+), consistent with the same selection effect.
+
+`lexeme_reference.txt` (word-tag glossary used by the Overview tab) is copied from
+[duolingo/halflife-regression](https://github.com/duolingo/halflife-regression),
+Copyright (c) 2016 Duolingo, Inc., MIT License.
