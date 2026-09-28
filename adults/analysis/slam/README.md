@@ -8,9 +8,10 @@ Tracks are named `<language learned>_<native language>`:
 `fr_en` English speakers learning French. Each covers learners' first ~30 days.
 
 ```bash
-uv run python prepare.py    # raw text -> parquet (~40s)
-uv run python patterns.py   # baseline model + word-pair links (~40s)
-uv run streamlit run app.py
+# from adults/analysis
+uv run python slam/prepare.py    # raw text -> parquet (~40s)
+uv run python slam/patterns.py   # baseline model + word-pair links (~40s)
+uv run streamlit run explorer.py   # the combined explorer
 ```
 
 ## Findings so far

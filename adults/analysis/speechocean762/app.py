@@ -1,6 +1,6 @@
 """speechocean762 explorer: Mandarin speakers reading English aloud.
 
-Run:  uv run streamlit run app.py --server.port 8503
+Page of the combined explorer: run `uv run streamlit run explorer.py` from adults/analysis.
 Needs prepare.py to have been run first.
 """
 
@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-import overview
+from speechocean762 import overview
 
 PQ = Path(__file__).resolve().parents[2] / "data" / "speechocean762" / "parquet"
 GROUPS = ["child (6-12)", "teen (13-15)", "adult (19+)"]
@@ -27,7 +27,6 @@ HINT = {
     "TH": "th-in", "V": "v", "W": "w", "Y": "y-es", "Z": "z", "ZH": "mea-s-ure",
 }
 
-st.set_page_config(page_title="Pronunciation explorer", layout="wide")
 st.html("""<style>
 .w{display:inline-block;margin:4px 10px 10px 0;padding:4px 8px;border-radius:6px;
    border:1px solid rgba(128,128,128,.3);vertical-align:top}

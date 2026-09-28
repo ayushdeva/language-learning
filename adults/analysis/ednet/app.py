@@ -1,6 +1,6 @@
 """EdNet explorer: Korean students practising for the TOEIC on Santa.
 
-Run:  uv run streamlit run app.py --server.port 8504
+Page of the combined explorer: run `uv run streamlit run explorer.py` from adults/analysis.
 Needs prepare.py to have been run first.
 """
 
@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-import overview
+from ednet import overview
 
 DATA = Path(__file__).resolve().parents[2] / "data" / "ednet"
 PQ = DATA / "parquet"
@@ -21,7 +21,6 @@ PART_NAME = {1: "1 Photographs", 2: "2 Question–response", 3: "3 Conversations
              5: "5 Incomplete sentences", 6: "6 Text completion", 7: "7 Reading comprehension"}
 STAGES = {1: "1–10", 2: "11–30", 3: "31–100", 4: "101–300", 5: "301–1k", 6: "1k–3k", 7: "3k+"}
 
-st.set_page_config(page_title="EdNet explorer", layout="wide")
 
 
 @st.cache_resource
@@ -166,13 +165,18 @@ with tab_q:
     st.caption("EdNet doesn't release question content (text, options, passages, audio or images): only the "
                "id, bundle, correct letter, part and skill tags. What students chose is all there is to go on.")
 
-    m = st.columns(6)
-    m[0].metric("Part", PART_NAME[qr.part])
-    m[1].metric("Correct option", qr.correct_answer)
-    m[2].metric("Answers", f"{int(qr.answers):,}" if pd.notna(qr.answers) else "0")
-    m[3].metric("Accuracy", f"{qr.accuracy:.1%}" if pd.notna(qr.accuracy) else "–")
-    m[4].metric("Skill tags", qr.tags.replace(";", ", "))
-    m[5].metric("Bundle", f"{qr.bundle_id} ({(Q.bundle_id == qr.bundle_id).sum()} q)")
+    # Metrics sized to their content in a wrapping row, so nothing gets ellipsised at narrow widths;
+    # the wordy part of a value sits in an arrowless grey delta line under it
+    note = dict(delta_color="off", delta_arrow="off", width="content")
+    tags = qr.tags.split(";")
+    bundle_n = int((Q.bundle_id == qr.bundle_id).sum())
+    with st.container(horizontal=True, gap="medium"):
+        st.metric("Part", qr.part, PART_NAME[qr.part].split(" ", 1)[1], **note)
+        st.metric("Correct option", qr.correct_answer, width="content")
+        st.metric("Answers", f"{int(qr.answers):,}" if pd.notna(qr.answers) else "0", width="content")
+        st.metric("Accuracy", f"{qr.accuracy:.1%}" if pd.notna(qr.accuracy) else "–", width="content")
+        st.metric("Skill tags", len(tags), ", ".join(tags), **note)
+        st.metric("Bundle", qr.bundle_id, f"{bundle_n} question{'s' * (bundle_n != 1)}", **note)
 
     if pd.isna(qr.answers):
         st.info("Nobody answered this question in KT1.")

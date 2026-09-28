@@ -1,6 +1,6 @@
 """SLAM explorer: look at one learner, one word, or links between words.
 
-Run:  uv run streamlit run app.py
+Page of the combined explorer: run `uv run streamlit run explorer.py` from adults/analysis.
 Needs prepare.py and patterns.py to have been run first.
 """
 
@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-import overview
+from slam import overview
 
 PQ = Path(__file__).resolve().parents[2] / "data" / "slam" / "parquet"
 TRACKS = {
@@ -26,10 +26,9 @@ FORMAT_LABEL = {
     "listen": "listen & type",
 }
 
-st.set_page_config(page_title="SLAM explorer", layout="wide")
 
 
-@st.cache_resource
+@st.cache_resource(max_entries=1)  # one language pair in memory at a time
 def load(track: str):
     ex = pd.read_parquet(PQ / f"{track}_exercises.parquet")
     tok = pd.read_parquet(PQ / f"{track}_tokens.parquet",

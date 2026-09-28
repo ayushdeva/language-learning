@@ -7,14 +7,22 @@ Exploring how people learn languages, in two tracks:
 
 Each track has `literature/` (paper notes), `data/` (raw downloads, not in git) and `analysis/`.
 
-## Explorers (adults/analysis)
+## Explorer (adults/analysis)
 
-| App | Dataset | Run |
-|---|---|---|
-| [slam](adults/analysis/slam) | Duolingo SLAM 2018: word-level right/wrong, first 30 days | `uv run streamlit run app.py` |
-| [duolingo_hlr](adults/analysis/duolingo_hlr) | Duolingo spaced repetition 2016: 13M word reviews | `uv run streamlit run app.py --server.port 8502` |
-| [speechocean762](adults/analysis/speechocean762) | Mandarin speakers reading English, expert-scored | `uv run streamlit run app.py --server.port 8503` |
-| [ednet](adults/analysis/ednet) | EdNet KT1: 95M TOEIC answers by 784k Korean students | `uv run streamlit run app.py --server.port 8504` |
+One Streamlit app with a page per dataset; pick the dataset in the left panel.
 
-Datasets are not in the repo. Download them into `adults/data/<name>/` as described in each README,
-then run that folder's `prepare.py` (and `patterns.py` for slam).
+```bash
+cd adults/analysis
+uv run streamlit run explorer.py        # http://localhost:8501
+```
+
+| Page | Dataset |
+|---|---|
+| [Duolingo SLAM](adults/analysis/slam) | Duolingo SLAM 2018: word-level right/wrong, learners' first 30 days |
+| [Duolingo spaced repetition](adults/analysis/duolingo_hlr) | Duolingo half-life regression 2016: 13M word reviews |
+| [SpeechOcean762](adults/analysis/speechocean762) | Mandarin speakers reading English aloud, expert-scored |
+| [EdNet (TOEIC)](adults/analysis/ednet) | EdNet KT1: 95M TOEIC answers by 784k Korean students |
+
+Datasets are not in the repo. Download each into `adults/data/<name>/` as described in its folder's README,
+then run that folder's `prepare.py` from `adults/analysis` (e.g. `uv run python slam/prepare.py`; SLAM also
+needs `uv run python slam/patterns.py`). All pages share one environment (`adults/analysis/pyproject.toml`).

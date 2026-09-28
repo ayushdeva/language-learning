@@ -5,8 +5,9 @@ Harvard Dataverse doi:10.7910/DVN/N8XJME, CC BY-NC 4.0. 12.9M word reviews by 11
 28 Feb - 12 Mar 2013, six languages. Raw file in `adults/data/duolingo_hlr/`.
 
 ```bash
-uv run python prepare.py                        # csv.gz -> parquet + summaries (~20s)
-uv run streamlit run app.py --server.port 8502
+# from adults/analysis
+uv run python duolingo_hlr/prepare.py                        # csv.gz -> parquet + summaries (~20s)
+uv run streamlit run explorer.py   # the combined explorer
 ```
 
 ## Findings so far

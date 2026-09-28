@@ -9,8 +9,9 @@ Download into `adults/data/ednet/`: `EdNet-KT1.zip` (bit.ly/ednet_kt1, 1.1 GB, k
 Contents zip (bit.ly/ednet-content), unzipped to `contents/`.
 
 ```bash
-uv run python prepare.py                        # zip -> parquet + summaries (~2 min, ~3 GB on disk)
-uv run streamlit run app.py --server.port 8504
+# from adults/analysis
+uv run python ednet/prepare.py                        # zip -> parquet + summaries (~2 min, ~3 GB on disk)
+uv run streamlit run explorer.py   # the combined explorer
 ```
 
 ## Findings so far

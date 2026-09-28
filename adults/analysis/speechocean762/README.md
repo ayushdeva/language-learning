@@ -5,8 +5,9 @@ Data: Zhang et al. (2021), speechocean762, OpenSLR 101, CC BY 4.0. 5,000 English
 sentence, word and phone level. Raw files in `adults/data/speechocean762/`.
 
 ```bash
-uv run python prepare.py                        # json + kaldi files -> parquet (~5s)
-uv run streamlit run app.py --server.port 8503
+# from adults/analysis
+uv run python speechocean762/prepare.py                        # json + kaldi files -> parquet (~5s)
+uv run streamlit run explorer.py   # the combined explorer
 ```
 
 Note: `completeness` is on a 0-10 scale in the data (README says 0-1).

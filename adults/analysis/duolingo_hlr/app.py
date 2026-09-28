@@ -1,6 +1,6 @@
 """Duolingo spaced-repetition explorer (Settles & Meeder 2016 data).
 
-Run:  uv run streamlit run app.py --server.port 8502
+Page of the combined explorer: run `uv run streamlit run explorer.py` from adults/analysis.
 Needs prepare.py to have been run first.
 """
 
@@ -12,7 +12,7 @@ import duckdb
 import pandas as pd
 import streamlit as st
 
-import overview
+from duolingo_hlr import overview
 
 PQ = Path(__file__).resolve().parents[2] / "data" / "duolingo_hlr" / "parquet"
 TRACES = PQ / "traces.parquet"
@@ -23,7 +23,6 @@ SHORT = DELTA_ORDER[:4]   # under a day
 LONG = DELTA_ORDER[7:]    # over a week
 HIST_ORDER = ["1-2", "3-5", "6-10", "11-25", "26+"]
 
-st.set_page_config(page_title="Spaced repetition explorer", layout="wide")
 
 
 def label(lexeme: str) -> str:
