@@ -28,6 +28,10 @@ class Task:
     words: list[str]
     lemmas: list[str]
     morph: list[tuple[str, ...]]   # per token, e.g. ("NOUN:Number=Plur", "NOUN:Gender=Masc")
+    pos: list[str]       # per token part of speech
+    dep: list[str]       # per token dependency label
+    client: str          # ios / android / web
+    session: str         # lesson / practice / test
 
 
 @dataclass
@@ -36,8 +40,8 @@ class Dataset:
     tasks: list[Task]            # grouped by learner, chronological within learner
     outcomes: list[np.ndarray]   # per task: 1 = token wrong
 
-    def only(self, split: str) -> "Dataset":
-        keep = [i for i, t in enumerate(self.tasks) if t.split == split]
+    def only(self, *splits: str) -> "Dataset":
+        keep = [i for i, t in enumerate(self.tasks) if t.split in splits]
         return Dataset(self.track, [self.tasks[i] for i in keep], [self.outcomes[i] for i in keep])
 
 
@@ -48,10 +52,10 @@ def morph_kcs(pos: str, morph: str) -> tuple[str, ...]:
 
 def load(track: str, formats: tuple[str, ...] = ("reverse_translate",)) -> Dataset:
     ex = pd.read_parquet(PARQUET / f"{track}_exercises.parquet",
-                         columns=["ex_id", "user", "days", "format", "split", "ex_num"])
+                         columns=["ex_id", "user", "days", "format", "split", "ex_num", "client", "session"])
     ex = ex[ex["format"].isin(formats)]
     tok = pd.read_parquet(PARQUET / f"{track}_tokens.parquet",
-                          columns=["ex_id", "pos_in_ex", "word", "pos", "morph", "wrong"])
+                          columns=["ex_id", "pos_in_ex", "word", "pos", "morph", "dep", "wrong"])
     tok = tok.merge(ex, on="ex_id").sort_values(["user", "ex_num", "pos_in_ex"], kind="stable")
 
     lang = track.split("_")[0]
@@ -62,6 +66,7 @@ def load(track: str, formats: tuple[str, ...] = ("reverse_translate",)) -> Datas
     words = tok["word"].tolist()
     lemmas = [lemma_of[w] for w in words]
     morph = [kcs_of[k] for k in pm]
+    pos, dep = tok["pos"].astype(str).tolist(), tok["dep"].astype(str).tolist()
     wrong = tok["wrong"].to_numpy()
 
     ex_ids = tok["ex_id"].to_numpy()
@@ -69,10 +74,12 @@ def load(track: str, formats: tuple[str, ...] = ("reverse_translate",)) -> Datas
     ends = np.r_[starts[1:], len(tok)]
     users, days = tok["user"].astype(str).to_numpy(), tok["days"].to_numpy()
     fmts, splits = tok["format"].astype(str).to_numpy(), tok["split"].astype(str).to_numpy()
+    clients, sessions = tok["client"].astype(str).to_numpy(), tok["session"].astype(str).to_numpy()
 
     tasks, outcomes = [], []
     for s, e in zip(starts, ends):
-        tasks.append(Task(ex_ids[s], users[s], float(days[s]), fmts[s], splits[s], words[s:e], lemmas[s:e], morph[s:e]))
+        tasks.append(Task(ex_ids[s], users[s], float(days[s]), fmts[s], splits[s], words[s:e], lemmas[s:e], morph[s:e],
+                          pos[s:e], dep[s:e], clients[s], sessions[s]))
         outcomes.append(wrong[s:e])
     return Dataset(track, tasks, outcomes)
 

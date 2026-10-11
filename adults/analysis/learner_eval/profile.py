@@ -52,3 +52,26 @@ class CountUpdater:
             p.lemma[lemma].add(y, d, w)
             for m in morph:
                 p.morph[m].add(y, d, w)
+
+
+class DecayUpdater(CountUpdater):
+    """Same profile, but old evidence fades: before each new observation a KC's counts are multiplied by
+    0.5 ** (days since last seen / half_life), so its rate tracks recent performance."""
+
+    def __init__(self, half_life: float, format_weights: dict[str, float] | None = None):
+        super().__init__(format_weights)
+        self.half_life = half_life
+
+    def update(self, p: LearnerProfile, task: Task, wrong: np.ndarray):
+        d = task.days
+        decayed = set()
+        kcs = [p.overall, p.format[task.format]]
+        for word, lemma, morph in zip(task.words, task.lemmas, task.morph):
+            kcs += [p.word[word], p.lemma[lemma], *(p.morph[m] for m in morph)]
+        for kc in kcs:
+            if id(kc) not in decayed and kc.last_seen is not None:
+                f = 0.5 ** ((d - kc.last_seen) / self.half_life)
+                kc.n_seen *= f
+                kc.n_wrong *= f
+            decayed.add(id(kc))
+        super().update(p, task, wrong)
