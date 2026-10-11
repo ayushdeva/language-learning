@@ -26,3 +26,9 @@ uv run streamlit run explorer.py        # http://localhost:8501
 Datasets are not in the repo. Download each into `adults/data/<name>/` as described in its folder's README,
 then run that folder's `prepare.py` from `adults/analysis` (e.g. `uv run python slam/prepare.py`; SLAM also
 needs `uv run python slam/patterns.py`). All pages share one environment (`adults/analysis/pyproject.toml`).
+
+## Learner-profile eval (adults/analysis/learner_eval)
+
+Knowledge-tracing evaluation on SLAM: build a learner profile from history, predict the next exercise,
+compare baselines. See [its README](adults/analysis/learner_eval/README.md); run with
+`uv run python -m learner_eval.run` from `adults/analysis`.
