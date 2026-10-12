@@ -38,6 +38,7 @@ dependencies = [
     { name = "pyarrow" },
     { name = "scikit-learn" },
     { name = "scipy" },
+    { name = "simplemma" },
     { name = "streamlit" },
 ]
 
@@ -50,6 +51,7 @@ requires-dist = [
     { name = "pyarrow", specifier = ">=25.0.1" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "scipy", specifier = ">=1.18.1" },
+    { name = "simplemma", specifier = ">=2.0.0" },
     { name = "streamlit", specifier = ">=1.64.0" },
 ]
 
@@ -993,6 +995,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/cf/d9/135be205d9de8783193aff9cc3bf483a03a38e4b29432c954e8cb66ac14e/scipy-1.18.1-cp315-cp315t-musllinux_1_2_x86_64.whl", hash = "sha256:179ce34a8d0fe273d8883ba59e17e052247d08973dfcb743ca52bb1cce2d60b0", size = 37521946, upload-time = "2026-08-21T23:28:35.245Z" },
     { url = "https://files.pythonhosted.org/packages/5c/a2/5b7d5270621ab7cfa3f7766067bf95dc360b5efb6394694e8143b4156e2b/scipy-1.18.1-cp315-cp315t-win_amd64.whl", hash = "sha256:5632e3ae3d09197c446310cd5187de63e28448ce22f0f67b2b93d97503c0c230", size = 37408295, upload-time = "2026-08-21T23:28:40.724Z" },
     { url = "https://files.pythonhosted.org/packages/63/ad/741c19fcb66755ff953daf9243af8480e4bf3d7fbe57583c178c7d2b6b51/scipy-1.18.1-cp315-cp315t-win_arm64.whl", hash = "sha256:eda632a7981f69730d6281f451db9c1c370993a2c0d7ddb43e2a809a2862b83a", size = 25319710, upload-time = "2026-08-21T23:28:45.713Z" },
+]
+
+[[package]]
+name = "simplemma"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/09/bf/c5f923da5eb468c6d4a86c6b3250ef92470a0d31bb51cd7d2fbbea22b7c0/simplemma-2.0.0.tar.gz", hash = "sha256:03f9ba792aa51ebbe18a78fc3138c0c0087d81b284eefa534f6f2015233dcb8d", size = 19084504, upload-time = "2026-08-12T13:48:07.179Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e2/e4/078d18631ce1c012af0f25e753f473745c0b139757334175a76d6b910c82/simplemma-2.0.0-py3-none-any.whl", hash = "sha256:db33b15f5aed6485a748ce34d1f510ca760af2633289ab9a8493e2afa785c352", size = 18954708, upload-time = "2026-08-12T13:47:55.162Z" },
 ]
 
 [[package]]

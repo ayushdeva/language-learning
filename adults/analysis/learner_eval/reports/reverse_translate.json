@@ -1,0 +1,521 @@
+[
+ {
+  "track": "en_es",
+  "n_users": 2593,
+  "n_train_tokens": 1350894,
+  "n_test_tokens": 176239,
+  "base_rate": 0.14318888084483314,
+  "models": {
+   "random": {
+    "skill": -1.2851908153729723,
+    "log_loss": 0.9982512333949286,
+    "auroc": 0.5006963890433949,
+    "auroc_within_ex": 0.5002519843769686,
+    "f1@0.5": 0.24057549975790274,
+    "by_history": {
+     "0-9": -2.0395314288115873,
+     "10-49": -0.9143693534523369,
+     "50-199": -1.2367901360528522,
+     "200+": -1.3682862164570775
+    }
+   },
+   "base_rate": {
+    "skill": 0.0,
+    "log_loss": 0.43683495779848097,
+    "auroc": 0.5,
+    "auroc_within_ex": 0.5,
+    "f1@0.5": 0.0,
+    "by_history": {
+     "0-9": 0.0,
+     "10-49": 0.0,
+     "50-199": 0.0,
+     "200+": 0.0
+    }
+   },
+   "learner_past_accuracy": {
+    "skill": 0.025086029552076505,
+    "log_loss": 0.4258765031377682,
+    "auroc": 0.6089397240737953,
+    "auroc_within_ex": 0.5,
+    "f1@0.5": 0.015542386714453,
+    "by_history": {
+     "0-9": 0.1154410029284173,
+     "10-49": 0.0376054909146063,
+     "50-199": 0.0243268288386449,
+     "200+": 0.025160339777061225
+    }
+   },
+   "word_difficulty": {
+    "skill": 0.11405056730585672,
+    "log_loss": 0.38701368304253425,
+    "auroc": 0.7280889617804547,
+    "auroc_within_ex": 0.7411490487589769,
+    "f1@0.5": 0.12160574412532638,
+    "by_history": {
+     "0-9": 0.21637624819717238,
+     "10-49": 0.12315520896212506,
+     "50-199": 0.12246384983034175,
+     "200+": 0.10328346914349995
+    }
+   },
+   "ability_x_difficulty": {
+    "skill": 0.14399833724382027,
+    "log_loss": 0.3739314502255253,
+    "auroc": 0.7567868433390808,
+    "auroc_within_ex": 0.7411490487589769,
+    "f1@0.5": 0.20780939774983453,
+    "by_history": {
+     "0-9": 0.3139438519446519,
+     "10-49": 0.16010759332884705,
+     "50-199": 0.1510428794919374,
+     "200+": 0.13441068804178946
+    }
+   },
+   "profile_lr": {
+    "skill": 0.158952113220325,
+    "log_loss": 0.36739911812790094,
+    "auroc": 0.7700040039587568,
+    "auroc_within_ex": 0.7610243164923775,
+    "f1@0.5": 0.24849895142060963,
+    "by_history": {
+     "0-9": 0.347473994680502,
+     "10-49": 0.17486961033523085,
+     "50-199": 0.16417077806130365,
+     "200+": 0.15157922226544351
+    },
+    "coef": {
+     "pop_word": 0.79,
+     "ability": 0.539,
+     "format_dev": -0.116,
+     "word_dev": 0.257,
+     "lemma_dev": 0.073,
+     "morph_dev": 0.045,
+     "word_unseen": 0.209,
+     "log_gap": 0.095,
+     "log_n_word": 0.121,
+     "gap_x_n": -0.019
+    },
+    "calibration": [
+     {
+      "predicted": 0.022600513918760397,
+      "actual": 0.032682705401724924,
+      "tokens": 17624
+     },
+     {
+      "predicted": 0.04244870580464425,
+      "actual": 0.0443145710394916,
+      "tokens": 17624
+     },
+     {
+      "predicted": 0.05894116055598363,
+      "actual": 0.05980481162051748,
+      "tokens": 17624
+     },
+     {
+      "predicted": 0.07700448293098743,
+      "actual": 0.07245801180208807,
+      "tokens": 17624
+     },
+     {
+      "predicted": 0.09845864884991284,
+      "actual": 0.09106899682251475,
+      "tokens": 17624
+     },
+     {
+      "predicted": 0.1262148437370939,
+      "actual": 0.11303410316064234,
+      "tokens": 17623
+     },
+     {
+      "predicted": 0.16409133634883574,
+      "actual": 0.15172492056286882,
+      "tokens": 17624
+     },
+     {
+      "predicted": 0.2185513579722213,
+      "actual": 0.2017703132092601,
+      "tokens": 17624
+     },
+     {
+      "predicted": 0.30359098134960105,
+      "actual": 0.3037335451656832,
+      "tokens": 17624
+     },
+     {
+      "predicted": 0.5015160973779269,
+      "actual": 0.5073195642305947,
+      "tokens": 17624
+     }
+    ]
+   },
+   "profile_gbdt": {
+    "skill": 0.22045372411049213,
+    "log_loss": 0.3405330645301562,
+    "auroc": 0.8134224185306829,
+    "auroc_within_ex": 0.8067279828650624,
+    "f1@0.5": 0.38098385661624506,
+    "by_history": {
+     "0-9": 0.24961164154613913,
+     "10-49": 0.2039233243712374,
+     "50-199": 0.21404890124700116,
+     "200+": 0.22928337330866544
+    }
+   }
+  },
+  "descriptions": {
+   "random": "A uniformly random probability for every token. The floor: knows nothing, and is confidently wrong half the time.",
+   "base_rate": "The overall error rate of this task type in the train split, for every token. The reference (skill = 0).",
+   "learner_past_accuracy": "This learner's own error rate so far (all words), smoothed toward the base rate. Knows who, not what.",
+   "word_difficulty": "How often other learners got this word wrong (train split). Same for every learner: knows what, not who.",
+   "ability_x_difficulty": "Combine the two above on the log-odds scale: a weak learner on a hard word gets both penalties. Nothing is fitted.",
+   "profile_lr": "Logistic regression on features read from the full profile: word difficulty, learner ability, how the learner did on this word / lemma / morphology before, and how long since they last saw the word.",
+   "profile_gbdt": "Gradient-boosted trees on ~40 numbers: read from the same profile (rates, counts, recency for word / lemma / morphology, vocabulary size, time since last session; updated with 3-day decay), plus how hard this token is for other learners in this format / sentence / word pair, plus task context (POS, dependency, position, client, session)."
+  }
+ },
+ {
+  "track": "es_en",
+  "n_users": 2643,
+  "n_train_tokens": 671578,
+  "n_test_tokens": 96161,
+  "base_rate": 0.22477061488017774,
+  "models": {
+   "random": {
+    "skill": -0.8334044542969612,
+    "log_loss": 0.996313263283605,
+    "auroc": 0.5018819730936056,
+    "auroc_within_ex": 0.49974934830559453,
+    "f1@0.5": 0.3196457212609825,
+    "by_history": {
+     "0-9": -1.1446349122414947,
+     "10-49": -0.7185325649902159,
+     "50-199": -0.8193728775369338,
+     "200+": -0.9128876543896562
+    }
+   },
+   "base_rate": {
+    "skill": 0.0,
+    "log_loss": 0.5434225170275656,
+    "auroc": 0.5,
+    "auroc_within_ex": 0.5,
+    "f1@0.5": 0.0,
+    "by_history": {
+     "0-9": 0.0,
+     "10-49": 0.0,
+     "50-199": 0.0,
+     "200+": 0.0
+    }
+   },
+   "learner_past_accuracy": {
+    "skill": 0.02816589223548016,
+    "log_loss": 0.5281165369746338,
+    "auroc": 0.6138648989650548,
+    "auroc_within_ex": 0.5,
+    "f1@0.5": 0.0471532909067612,
+    "by_history": {
+     "0-9": -0.07797082958649493,
+     "10-49": 0.01814091228881598,
+     "50-199": 0.03581664438577414,
+     "200+": 0.019751789451722623
+    }
+   },
+   "word_difficulty": {
+    "skill": 0.09079303462263388,
+    "log_loss": 0.494083537624363,
+    "auroc": 0.6974813368466695,
+    "auroc_within_ex": 0.7042435331862843,
+    "f1@0.5": 0.22568834212067956,
+    "by_history": {
+     "0-9": 0.1569326193876026,
+     "10-49": 0.1012126690387588,
+     "50-199": 0.09613689232617617,
+     "200+": 0.07615029910088955
+    }
+   },
+   "ability_x_difficulty": {
+    "skill": 0.12112813618627516,
+    "log_loss": 0.47759876037836224,
+    "auroc": 0.7299803807782596,
+    "auroc_within_ex": 0.7042435331862843,
+    "f1@0.5": 0.3071930773391022,
+    "by_history": {
+     "0-9": 0.08138687297203062,
+     "10-49": 0.12641654636522892,
+     "50-199": 0.13269732071281826,
+     "200+": 0.09822697515389467
+    }
+   },
+   "profile_lr": {
+    "skill": 0.1421411391979739,
+    "log_loss": 0.46617982139143704,
+    "auroc": 0.7511533137487805,
+    "auroc_within_ex": 0.7335697814317225,
+    "f1@0.5": 0.3521931381725462,
+    "by_history": {
+     "0-9": 0.10477243761563759,
+     "10-49": 0.1363573051383189,
+     "50-199": 0.1484766716338729,
+     "200+": 0.13383047669725778
+    },
+    "coef": {
+     "pop_word": 0.793,
+     "ability": 0.512,
+     "format_dev": -0.118,
+     "word_dev": 0.275,
+     "lemma_dev": 0.061,
+     "morph_dev": 0.068,
+     "word_unseen": 0.236,
+     "log_gap": 0.094,
+     "log_n_word": 0.058,
+     "gap_x_n": 0.001
+    },
+    "calibration": [
+     {
+      "predicted": 0.034960953965842534,
+      "actual": 0.04803992929187897,
+      "tokens": 9617
+     },
+     {
+      "predicted": 0.0735184772366507,
+      "actual": 0.0810108153078203,
+      "tokens": 9616
+     },
+     {
+      "predicted": 0.10822894618908267,
+      "actual": 0.10680116472545757,
+      "tokens": 9616
+     },
+     {
+      "predicted": 0.14355014772390784,
+      "actual": 0.13467138103161397,
+      "tokens": 9616
+     },
+     {
+      "predicted": 0.18130090661602885,
+      "actual": 0.16971713810316139,
+      "tokens": 9616
+     },
+     {
+      "predicted": 0.22275557273726795,
+      "actual": 0.20476289517470883,
+      "tokens": 9616
+     },
+     {
+      "predicted": 0.2708958744718403,
+      "actual": 0.2459442595673877,
+      "tokens": 9616
+     },
+     {
+      "predicted": 0.3324966064773318,
+      "actual": 0.3119800332778702,
+      "tokens": 9616
+     },
+     {
+      "predicted": 0.42024638219946997,
+      "actual": 0.40952579034941766,
+      "tokens": 9616
+     },
+     {
+      "predicted": 0.610292700138683,
+      "actual": 0.6204242928452579,
+      "tokens": 9616
+     }
+    ]
+   },
+   "profile_gbdt": {
+    "skill": 0.1919114044738568,
+    "log_loss": 0.43913353856208714,
+    "auroc": 0.7887328729118569,
+    "auroc_within_ex": 0.7779727290956487,
+    "f1@0.5": 0.4433474097424612,
+    "by_history": {
+     "0-9": 0.20830322990529448,
+     "10-49": 0.1676448176106854,
+     "50-199": 0.1919784465039457,
+     "200+": 0.20346905888404732
+    }
+   }
+  },
+  "descriptions": {
+   "random": "A uniformly random probability for every token. The floor: knows nothing, and is confidently wrong half the time.",
+   "base_rate": "The overall error rate of this task type in the train split, for every token. The reference (skill = 0).",
+   "learner_past_accuracy": "This learner's own error rate so far (all words), smoothed toward the base rate. Knows who, not what.",
+   "word_difficulty": "How often other learners got this word wrong (train split). Same for every learner: knows what, not who.",
+   "ability_x_difficulty": "Combine the two above on the log-odds scale: a weak learner on a hard word gets both penalties. Nothing is fitted.",
+   "profile_lr": "Logistic regression on features read from the full profile: word difficulty, learner ability, how the learner did on this word / lemma / morphology before, and how long since they last saw the word.",
+   "profile_gbdt": "Gradient-boosted trees on ~40 numbers: read from the same profile (rates, counts, recency for word / lemma / morphology, vocabulary size, time since last session; updated with 3-day decay), plus how hard this token is for other learners in this format / sentence / word pair, plus task context (POS, dependency, position, client, session)."
+  }
+ },
+ {
+  "track": "fr_en",
+  "n_users": 1213,
+  "n_train_tokens": 450552,
+  "n_test_tokens": 65266,
+  "base_rate": 0.20713480352989222,
+  "models": {
+   "random": {
+    "skill": -1.0106861216779115,
+    "log_loss": 0.9992215690482225,
+    "auroc": 0.5003258387785748,
+    "auroc_within_ex": 0.4995072024260804,
+    "f1@0.5": 0.28248438462215186,
+    "by_history": {
+     "0-9": 0.0027861532742315953,
+     "10-49": -0.8401796752379802,
+     "50-199": -0.99775856443977,
+     "200+": -1.062380008161698
+    }
+   },
+   "base_rate": {
+    "skill": 0.0,
+    "log_loss": 0.49695552094146606,
+    "auroc": 0.5,
+    "auroc_within_ex": 0.5,
+    "f1@0.5": 0.0,
+    "by_history": {
+     "0-9": 0.0,
+     "10-49": 0.0,
+     "50-199": 0.0,
+     "200+": 0.0
+    }
+   },
+   "learner_past_accuracy": {
+    "skill": 0.025106779187270667,
+    "log_loss": 0.4844785684112936,
+    "auroc": 0.6120361506495141,
+    "auroc_within_ex": 0.5,
+    "f1@0.5": 0.026590119353376643,
+    "by_history": {
+     "0-9": 0.13200350162175212,
+     "10-49": 0.025594009347554736,
+     "50-199": 0.02804968695945176,
+     "200+": 0.02086869027673799
+    }
+   },
+   "word_difficulty": {
+    "skill": 0.11112480773163358,
+    "log_loss": 0.44173143422567185,
+    "auroc": 0.7239946146570023,
+    "auroc_within_ex": 0.7332259287338894,
+    "f1@0.5": 0.2452946241850166,
+    "by_history": {
+     "0-9": 0.23729138458673682,
+     "10-49": 0.12081753903002446,
+     "50-199": 0.1190640154249979,
+     "200+": 0.09816136831192213
+    }
+   },
+   "ability_x_difficulty": {
+    "skill": 0.14053884542284312,
+    "log_loss": 0.4271139658018449,
+    "auroc": 0.7533922418484662,
+    "auroc_within_ex": 0.7332259287338894,
+    "f1@0.5": 0.28872867944434677,
+    "by_history": {
+     "0-9": 0.34749844473383895,
+     "10-49": 0.1691602958082099,
+     "50-199": 0.14952194422143816,
+     "200+": 0.12239819025538079
+    }
+   },
+   "profile_lr": {
+    "skill": 0.16231499443145592,
+    "log_loss": 0.41629218832717074,
+    "auroc": 0.7709335199482736,
+    "auroc_within_ex": 0.752407126611069,
+    "f1@0.5": 0.319358027562947,
+    "by_history": {
+     "0-9": 0.3734548163528151,
+     "10-49": 0.17336309694168017,
+     "50-199": 0.16590922835425048,
+     "200+": 0.15505669891291007
+    },
+    "coef": {
+     "pop_word": 0.922,
+     "ability": 0.52,
+     "format_dev": -0.107,
+     "word_dev": 0.343,
+     "lemma_dev": 0.006,
+     "morph_dev": 0.069,
+     "word_unseen": 0.189,
+     "log_gap": 0.061,
+     "log_n_word": -0.006,
+     "gap_x_n": 0.017
+    },
+    "calibration": [
+     {
+      "predicted": 0.024195443971579134,
+      "actual": 0.03692354833767428,
+      "tokens": 6527
+     },
+     {
+      "predicted": 0.05007092283744052,
+      "actual": 0.055155507890301825,
+      "tokens": 6527
+     },
+     {
+      "predicted": 0.07561187365604172,
+      "actual": 0.07814894269077537,
+      "tokens": 6526
+     },
+     {
+      "predicted": 0.10384809598779257,
+      "actual": 0.09453041213421173,
+      "tokens": 6527
+     },
+     {
+      "predicted": 0.13594519173870576,
+      "actual": 0.11998161201348452,
+      "tokens": 6526
+     },
+     {
+      "predicted": 0.1740774103474473,
+      "actual": 0.1616362800674123,
+      "tokens": 6527
+     },
+     {
+      "predicted": 0.22218621550207998,
+      "actual": 0.20042905301869446,
+      "tokens": 6526
+     },
+     {
+      "predicted": 0.2850309032503134,
+      "actual": 0.2773096368929064,
+      "tokens": 6527
+     },
+     {
+      "predicted": 0.3750927665335029,
+      "actual": 0.35963836959852896,
+      "tokens": 6526
+     },
+     {
+      "predicted": 0.5755142154865086,
+      "actual": 0.5893978857055309,
+      "tokens": 6527
+     }
+    ]
+   },
+   "profile_gbdt": {
+    "skill": 0.22535605106222845,
+    "log_loss": 0.3849635871885247,
+    "auroc": 0.8108130222991308,
+    "auroc_within_ex": 0.7923805913570887,
+    "f1@0.5": 0.4411842313578553,
+    "by_history": {
+     "0-9": 0.41526107528138245,
+     "10-49": 0.203654248237497,
+     "50-199": 0.22033487799815366,
+     "200+": 0.23641817076410898
+    }
+   }
+  },
+  "descriptions": {
+   "random": "A uniformly random probability for every token. The floor: knows nothing, and is confidently wrong half the time.",
+   "base_rate": "The overall error rate of this task type in the train split, for every token. The reference (skill = 0).",
+   "learner_past_accuracy": "This learner's own error rate so far (all words), smoothed toward the base rate. Knows who, not what.",
+   "word_difficulty": "How often other learners got this word wrong (train split). Same for every learner: knows what, not who.",
+   "ability_x_difficulty": "Combine the two above on the log-odds scale: a weak learner on a hard word gets both penalties. Nothing is fitted.",
+   "profile_lr": "Logistic regression on features read from the full profile: word difficulty, learner ability, how the learner did on this word / lemma / morphology before, and how long since they last saw the word.",
+   "profile_gbdt": "Gradient-boosted trees on ~40 numbers: read from the same profile (rates, counts, recency for word / lemma / morphology, vocabulary size, time since last session; updated with 3-day decay), plus how hard this token is for other learners in this format / sentence / word pair, plus task context (POS, dependency, position, client, session)."
+  }
+ }
+]
